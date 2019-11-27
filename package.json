@@ -6,7 +6,9 @@
   "scripts": {
     "lint": "./node_modules/.bin/tslint -p .",
     "watch": "./node_modules/.bin/concurrently --kill-others \"tsc -w\" \"./node_modules/.bin/nodemon dist/app.js\"",
-    "build": "npm run lint && ./node_modules/.bin/tsc"
+    "build": "npm run lint && npm run compile",
+    "compile": "./node_modules/.bin/tsc",
+    "start": "npm run compile && node dist/app.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +20,11 @@
     "url": "https://github.com/frankMazzarella/cli-notes/issues"
   },
   "homepage": "https://github.com/frankMazzarella/cli-notes#readme",
-  "dependencies": {},
+  "dependencies": {
+    "inquirer": "^7.0.0"
+  },
   "devDependencies": {
+    "@types/inquirer": "^6.5.0",
     "concurrently": "^5.0.0",
     "nodemon": "^2.0.1",
     "tslint": "^5.20.1",
